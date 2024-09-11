@@ -400,59 +400,59 @@ function NameModalInput() {
 
   const topCont = document.createElement("div");
   topCont.classList.add("topCont");
-  const logoEl = document.createElement("div");
-  logoEl.classList.add("logo");
-  const imgEl = document.createElement("img");
-  imgEl.src = `./Images/Logo.png`;
-  logoEl.appendChild(imgEl);
-  topCont.appendChild(logoEl);
   const textContent = document.createElement("div");
   textContent.classList.add("textContent");
   const textHead = document.createElement("h1");
   textHead.innerHTML = `Hey, User`;
   const textPara = document.createElement("p");
-  textPara.innerHTML = `Stick with your Goals by achieving your tasks`;
+  textPara.innerHTML = `Stay on track and achieve your goals with each task completed`;
   textContent.appendChild(textHead);
   textContent.appendChild(textPara);
   topCont.appendChild(textContent);
   modalEl.appendChild(topCont);
 
   const formEl = document.createElement("form");
-  const labelEl = document.createElement("label");
-  labelEl.htmlFor = `inputNametext`;
-  labelEl.innerHTML = `Enter your name`;
-  const inputEl = document.createElement("input");
-  inputEl.type = `text`;
-  inputEl.placeholder = `Enter your Username`;
-  const buttonEl = document.createElement("button");
-  buttonEl.type = `submit`;
-  buttonEl.innerHTML = `Submit`;
 
-  inputEl.value = userName;
-  formEl.appendChild(labelEl);
-  formEl.appendChild(inputEl);
-  formEl.appendChild(buttonEl);
-  modalEl.appendChild(formEl);
-  bodyEl.appendChild(modalCont);
-  bodyEl.classList.add("userNameModal");
-  formEl.addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (inputEl.value.trim()) {
-      userName = inputEl.value;
-      userNameEl.innerHTML = userName;
-      statUserNameEl.innerHTML = userName;
-      localStorage.setItem("userName", userName);
-    }
+const labelEl = document.createElement("label");
+labelEl.htmlFor = "inputNametext"; // this is the id reference for the input field
+labelEl.innerHTML = "Enter your name";
+
+const inputEl = document.createElement("input");
+inputEl.type = "text";
+inputEl.placeholder = "Enter your Username";
+inputEl.id = "inputNametext"; // add the matching id for the input element
+
+const buttonEl = document.createElement("button");
+buttonEl.type = "submit";
+buttonEl.innerHTML = "Submit";
+
+inputEl.value = userName;
+formEl.appendChild(labelEl);
+formEl.appendChild(inputEl);
+formEl.appendChild(buttonEl);
+modalEl.appendChild(formEl);
+bodyEl.appendChild(modalCont);
+bodyEl.classList.add("userNameModal");
+
+formEl.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (inputEl.value.trim()) {
+    userName = inputEl.value;
+    userNameEl.innerHTML = userName;
+    statUserNameEl.innerHTML = userName;
+    localStorage.setItem("userName", userName);
+  }
+  modalCont.remove();
+  bodyEl.classList.remove("userNameModal");
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target.classList.contains("modalOverlay")) {
     modalCont.remove();
     bodyEl.classList.remove("userNameModal");
-  });
+  }
+});
 
-  window.addEventListener("click", (e) => {
-    if (e.target.classList.contains("modalOverlay")) {
-      modalCont.remove();
-      bodyEl.classList.remove("userNameModal");
-    }
-  });
 }
 
 function getUserName() {
