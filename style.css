@@ -502,34 +502,73 @@ body .modalCont .modal form button {
   }
 }
 
-@media (max-width: 555px) {
-  body section nav {
-    padding: 1rem 0.1rem;
+@media (max-width: 768px) {
+    body section nav {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem 0.5rem;
+    }
+    body section nav .title .textarea h1 {
+      font-size: 1.5rem;
+    }
+    body section nav .title .textarea h1 span::after {
+      height: 2px;
+    }
+    body section nav .title .textarea p {
+      font-size: 0.875rem;
+    }
+    body section .formCont form {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+    body section .formCont form input,
+    body section .formCont form button {
+      font-size: 0.875rem;
+      width: 100%;
+    }
+    body section .listsCont ul li {
+      padding: 0.5rem;
+    }
+    body .sideNavCont {
+      width: 250px; /* Adjust as needed */
+    }
+    body.sideActive .sideNavCont {
+      transform: translateX(0);
+    }
+    body .overlay,
+    body .modalOverlay {
+      width: 100vw;
+    }
   }
-  body section nav .title .textarea h1 {
-    font-size: 18px;
+  
+  @media (max-width: 555px) {
+    body section nav {
+      padding: 1rem 0.1rem;
+    }
+    body section nav .title .textarea h1 {
+      font-size: 1.2rem;
+    }
+    body section nav .title .textarea h1 span::after {
+      height: 2px;
+    }
+    body section nav .title .textarea p {
+      font-size: 0.75rem;
+    }
+    body section .formCont form {
+      grid-template-columns: 1fr;
+    }
+    body section .formCont form input,
+    body section .formCont form button {
+      font-size: 0.75rem;
+    }
+    body section .listsCont .liRight .icons {
+      display: flex;
+    }
   }
-  body section nav .title .textarea h1 span::after {
-    height: 2px;
+  
+  @media (max-width: 430px) {
+    body section .formCont form {
+      grid-template-columns: 1fr;
+    }
   }
-  body section nav .title .textarea p {
-    font-size: 14px;
-  }
-  body section .formCont form {
-    grid-template-columns: auto 25%;
-  }
-  body section .formCont form input,
-  body section .formCont form button {
-    font-size: 15px;
-  }
-  body section .listsCont .liRight .icons {
-    display: flex;
-  }
-}
-
-@media (max-width: 430px) {
-  body section .formCont form {
-    grid-template-columns: auto 30%;
-  }
-}
-/*# sourceMappingURL=style.css.map */
+  
